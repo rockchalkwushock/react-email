@@ -68,7 +68,7 @@
 	
 	var _InboxContainer2 = _interopRequireDefault(_InboxContainer);
 	
-	var _SpamContainer = __webpack_require__(242);
+	var _SpamContainer = __webpack_require__(243);
 	
 	var _SpamContainer2 = _interopRequireDefault(_SpamContainer);
 	
@@ -27168,7 +27168,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'app container' },
+	        { className: 'app-container' },
 	        _react2.default.createElement(
 	          'h1',
 	          null,
@@ -27176,12 +27176,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'sidebar container' },
+	          { className: 'sidebar-container' },
 	          _react2.default.createElement(_SideBar2.default, null)
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'mailbox container' },
+	          { className: 'mailbox-container' },
 	          this.props.children
 	        )
 	      );
@@ -27314,31 +27314,25 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	var _Email = __webpack_require__(240);
 	
 	var _Email2 = _interopRequireDefault(_Email);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var EmailContainer = void 0;
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	exports.default = EmailContainer = function EmailContainer(props) {
+	  console.log(props);
+	  // if the user chooses 'inbox' then yield list of emails in inbox.
+	  // if the user chooses 'spam' then yield list of junk in spam.
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var EmailContainer = function (_React$Component) {
-	  _inherits(EmailContainer, _React$Component);
-	
-	  function EmailContainer() {
-	    _classCallCheck(this, EmailContainer);
-	
-	    return _possibleConstructorReturn(this, (EmailContainer.__proto__ || Object.getPrototypeOf(EmailContainer)).apply(this, arguments));
-	  }
-	
-	  return EmailContainer;
-	}(_react2.default.Component);
-	
-	exports.default = EmailContainer;
+	  // return (
+	  //   // list of emails (emails or spam)
+	  // )
+	};
 
 /***/ },
 /* 240 */
@@ -27414,78 +27408,126 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	var _EmailContainer = __webpack_require__(239);
 	
 	var _EmailContainer2 = _interopRequireDefault(_EmailContainer);
 	
+	var _email_library = __webpack_require__(242);
+	
+	var _email_library2 = _interopRequireDefault(_email_library);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var InboxContainer = void 0;
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var InboxContainer = function (_React$Component) {
-	  _inherits(InboxContainer, _React$Component);
-	
-	  function InboxContainer() {
-	    _classCallCheck(this, InboxContainer);
-	
-	    return _possibleConstructorReturn(this, (InboxContainer.__proto__ || Object.getPrototypeOf(InboxContainer)).apply(this, arguments));
-	  }
-	
-	  return InboxContainer;
-	}(_react2.default.Component);
-	
-	exports.default = InboxContainer;
+	exports.default = InboxContainer = function InboxContainer(props) {
+	    console.log(_email_library2.default.inbox);
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Inbox:'
+	        ),
+	        _react2.default.createElement(_EmailContainer2.default, { emails: _email_library2.default.inbox })
+	    );
+	};
 
 /***/ },
 /* 242 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var EMAILS = void 0;
+	exports.default = EMAILS = {
+	    inbox: {
+	        0: {
+	            id: 0,
+	            from: "billg@microsoft.com",
+	            to: "TeamWoz@Woz.org",
+	            title: "Possible work opportunity",
+	            content: "Dear Woz.  Fancy a job at Mister Softee?  Bill x"
+	        },
+	        1: {
+	            id: 1,
+	            from: "zuck@facebook.com",
+	            to: "TeamWoz@Woz.org",
+	            title: "Do you know PHP?",
+	            content: "Dear Woz.  We are in need of a PHP expert.  Fast.  Zuck x"
+	        }
+	    },
+	    spam: {
+	        0: {
+	            id: 0,
+	            from: "ChEaPFl1ghTZ@hotmail.com",
+	            to: "TeamWoz@Woz.org",
+	            title: "WaNt CHEEp FlitZ",
+	            content: "Theyre CheEp"
+	        },
+	        1: {
+	            id: 1,
+	            from: "NiKEAIRJordanZ@hotmail.com",
+	            to: "TeamWoz@Woz.org",
+	            title: "JorDanz For SAle",
+	            content: "Theyre REELY CheEp"
+	        }
+	    }
+	};
+
+/***/ },
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	        value: true
 	});
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(172);
+	
 	var _EmailContainer = __webpack_require__(239);
 	
 	var _EmailContainer2 = _interopRequireDefault(_EmailContainer);
 	
+	var _email_library = __webpack_require__(242);
+	
+	var _email_library2 = _interopRequireDefault(_email_library);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var SpamContainer = void 0;
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var SpamContainer = function (_React$Component) {
-	  _inherits(SpamContainer, _React$Component);
-	
-	  function SpamContainer() {
-	    _classCallCheck(this, SpamContainer);
-	
-	    return _possibleConstructorReturn(this, (SpamContainer.__proto__ || Object.getPrototypeOf(SpamContainer)).apply(this, arguments));
-	  }
-	
-	  return SpamContainer;
-	}(_react2.default.Component);
-	
-	exports.default = SpamContainer;
+	exports.default = SpamContainer = function SpamContainer(props) {
+	        return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                        'h2',
+	                        null,
+	                        'Spam:'
+	                ),
+	                _react2.default.createElement(_EmailContainer2.default, { emails: _email_library2.default })
+	        );
+	};
 
 /***/ }
 /******/ ]);

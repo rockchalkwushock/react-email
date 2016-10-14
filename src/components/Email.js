@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 let Email;
 
-export default Email = (props) => {
+export default Email = (email) => {
   return (
     <div className='email'>
       <p><strong>From: {email.from}</strong></p>
