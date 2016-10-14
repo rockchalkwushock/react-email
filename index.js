@@ -2,17 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';
 
-
-
-
-
-
 let routes = (
-  <Router history={hashHistory}>
-
-  </Router>
+    <Router history={hashHistory}>
+        {/* Parent Path: Leads to Mailbox */}
+        <Route path='/:mailbox_name' component={App}>
+            <IndexRoute component={MailboxContainer}/>
+            {/* Child Path: Leads to Inbox */}
+            <Route path='/inbox' component={InboxContainer}>
+                <IndexRoute component={InboxContainer}/>
+                {/* Sibling Path: Leads to Emails in Inbox */}
+                <Route path='/inbox/:emailId' component={EmailContainer}>
+                    <IndexRoute component={EmailContainer}/>
+                </Route>
+            </Route>
+            {/* Child Path: Leads to Spam */}
+            <Route path='/spam' component={SpamContainer}>
+                <IndexRoute component={SpamContainer}/>
+                {/* Sibling Path: Leads to Emails in Spam */}
+                <Route path='/spam/:emailId' component={EmailContainer}>
+                    <IndexRoute component={EmailContainer}/>
+                </Route>
+            </Route>
+        </Route>
+    </Router>
 );
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(routes, document.getElementById('app'));
+    ReactDOM.render(routes, document.getElementById('app'));
 })
