@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, IndexRoute, hashHistory, Link} from 'react-router';
 
+import App from './src/routes/App';
+import EmailContainer from './src/routes/EmailContainer';
+import InboxContainer from './src/routes/InboxContainer';
+import SpamContainer from './src/routes/SpamContainer';
+
+
+
 let routes = (
     <Router history={hashHistory}>
         {/* Parent Path: Leads to Mailbox */}
-        <Route path='/:mailbox_name' component={App}>
-            <IndexRoute component={MailboxContainer}/>
+        <Route path='/' component={App}>
             {/* Child Path: Leads to Inbox */}
             <Route path='/inbox' component={InboxContainer}>
                 <IndexRoute component={InboxContainer}/>
