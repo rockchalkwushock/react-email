@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 let Spam;
 
 export default Spam = (props) => {
-  return (
+    return (
         <div className='spam'>
             <strong>
                 <Link to={'/spam/'}>

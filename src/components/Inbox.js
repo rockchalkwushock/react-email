@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 let Inbox;
 
 export default Inbox = (props) => {
-  return (
+    return (
         <div className='inbox'>
             <strong>
                 <Link to={'/inbox/'}>

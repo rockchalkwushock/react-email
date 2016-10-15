@@ -5,8 +5,7 @@ let EmailListContainer;
 
 export default EmailListContainer = (props) => {
     let list = Object.keys(props.emails).map((id, index) => {
-      let email = props.emails[index];
-      console.log(props.type + '/' + email.id);
+        let email = props.emails[index];
         return (
             <li key={index}>
                 <Link to={'/' + props.type + '/' + email.id}>
