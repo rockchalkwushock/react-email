@@ -10,7 +10,7 @@ export default SpamContainer = (props) => {
   return (
           <div>
           <h2>Spam:</h2>
-          <EmailContainer emails={EMAILS} />
+          <EmailContainer emails={EMAILS[props.params.mailbox_name]} type={props.params.mailbox_name}/>
           </div>
       );
 };
